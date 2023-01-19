@@ -3,8 +3,8 @@
 
 function showArr(domElem, arr) {
   // document.querySelector(domElem).innerHTML = out;
-  let out1 = document.querySelector(domElem);
-  out1.innerHTML = arr;
+  let out = document.querySelector(domElem);
+  out.innerHTML = arr;
 }
 
 let d1 = [33, "best", 66, "best"];
@@ -24,41 +24,52 @@ function f1() {
 //Напишите функцию f2, которая применяет метод pop к массиву d1, а затем выводит его (showArr) в .out-2
 // функция выполняется при нажатии кнопки b-2
 
+let b2 = document.querySelector(".b-2");
+b2.addEventListener("click", f2);
+
 function f2() {
+  d1.pop();
   showArr(".out-2", d1);
 }
 
-document.querySelector(".b-2").onclick = f2;
 
 // Task 3
 // Напишите функцию f3, которая применяет метод shift к массиву d1, а затем выводит его (showArr) в .out-3
 // функция выполняется при нажатии кнопки b-3
+let b3 = document.querySelector(".b-3");
+b3.addEventListener("click", f3);
 
 function f3() {
+  d1.shift();
   showArr(".out-3", d1);
 }
 
-document.querySelector(".b-3").onclick = f3;
 
 // Task 4
 // Напишите функцию f4, которая применяет метод push к массиву d1, данные для массива берите из i-4, а затем выводит его (showArr) в .out-4
 // функция выполняется при нажатии кнопки b-4
-
+let b4 = document.querySelector(".b-4");
+b4.addEventListener("click", f4);
 function f4() {
+  let i4 = document.querySelector(".i-4");
+  d1.push(i4.value);
   showArr(".out-4", d1);
+  i4.value = '';
 }
 
-document.querySelector(".b-4").onclick = f4;
 
 // Task 5
 // Напишите функцию f5, которая применяет метод unshift к массиву d1, данные для массива берите из i-5, а затем выводит его (showArr) в .out-5
 // функция выполняется при нажатии кнопки b-5
-
+let b5 = document.querySelector(".b-5");
+b5.addEventListener("click", f5);
 function f5() {
+  let i5 = document.querySelector(".i-5");
+  d1.unshift(i5.value);
   showArr(".out-5", d1);
+  i5.value = '';
 }
 
-document.querySelector(".b-5").onclick = f5;
 
 // Task 6
 // Напишите функцию f6, которая эмулирует работу метода push применительно к массиву d6. Т.е. добавляет значение из i-6 как последний элемент в массив d6. Эмуляция, значит, что мы получим результат аналогичный методу push без применения его. Эмуляция заключается в присвоение значения как последнего элемента массива. Как вычислить индекс последнего элемента используя длину массива - вы знаете из предыдущего урока. Повторный запуск функции должен также приводить к добавлению элемента.
@@ -67,12 +78,16 @@ document.querySelector(".b-5").onclick = f5;
 // Вывод в out-6
 
 let d6 = ["test", 5, 12];
+let b6 = document.querySelector(".b-6");
+b6.addEventListener("click", f6);
 
 function f6() {
+  let i6 = document.querySelector(".i-6");
+  d6[d6.length] = i6.value;
   showArr(".out-6", d6);
+  i6.value = '';
 }
 
-document.querySelector(".b-6").onclick = f6;
 
 // Task 7
 // Напишите функцию f7, которая эмулирует метод pop, т.е. удаляет последний элемент массива d7. Эмулировать - получать результат аналогичный pop, но без применения pop. Функция может быть вызвана много раз, при этом каждый раз должен удаляться последний элемент d7.
@@ -81,12 +96,14 @@ document.querySelector(".b-6").onclick = f6;
 // Вывод в out-7
 
 let d7 = ["china", "india", "brazil", "japan", "egypt"];
+let b7 = document.querySelector(".b-7");
+b7.addEventListener("click", f7);
 
 function f7() {
+  d7.length = d7.length - 1;
   showArr(".out-7", d7);
 }
 
-document.querySelector(".b-7").onclick = f7;
 
 // Task 8
 // Напишите функцию f8, которая эмулирует работу метода unShift - добавляем значение из i-8 в начало массива d8.
@@ -95,12 +112,20 @@ document.querySelector(".b-7").onclick = f7;
 // Вывод в out-8
 
 let d8 = [2, "4", 12, 67, "hello"];
+let b8 = document.querySelector(".b-8");
+b8.addEventListener("click", f8);
 
 function f8() {
+  let i8 = document.querySelector(".i-8");
+  let m8 = [];
+  m8[0] = i8.value;
+  for (let i = 0; i < d8.length; i++) {
+    m8[m8.length] = d8[i];
+  };
+  d8 = m8;
   showArr(".out-8", d8);
+  i8.value = '';
 }
-
-document.querySelector(".b-8").onclick = f8;
 
 // Task 9
 // Напишите функцию f8, которая эмулирует работу метода shift - на примере массива d9.
@@ -109,12 +134,18 @@ document.querySelector(".b-8").onclick = f8;
 // Вывод в out-9
 
 let d9 = [100, 200, 300, 400, 700, 121];
+let b9 = document.querySelector(".b-9");
+b9.addEventListener("click", f9);
 
 function f9() {
+  let m9 = [];
+  for (let i = 1; i < d9.length; i++) {
+    m9[m9.length] = d9[i];
+  };
+  d9 = m9;
   showArr(".out-9", d9);
 }
 
-document.querySelector(".b-9").onclick = f9;
 
 // Task 10
 // Напишите функцию f10, которая применяет к массиву d10 метод reverse и выводит полученный массив в out-10.
@@ -123,12 +154,14 @@ document.querySelector(".b-9").onclick = f9;
 // Вывод в out-10
 
 let d10 = [3, 14, 15, 92, 6];
+let b10 = document.querySelector(".b-10");
+b10.addEventListener("click", f10);
 
 function f10() {
+  d10.reverse();
   showArr(".out-10", d10);
 }
 
-document.querySelector(".b-10").onclick = f10;
 
 // Task 11
 // Напишите функцию, которая получает число из input i-11, переводит в число, и с помощью метода indexOf проверяет наличие в массиве d11. Функция выводит в out-11 -1 если такого числа нет в массиве, либо его индекс в массиве.
@@ -137,10 +170,15 @@ document.querySelector(".b-10").onclick = f10;
 // Вывод в out-11
 
 let d11 = [2, 3, 4, 5, 6, 7];
+let b11 = document.querySelector(".b-11");
+b11.addEventListener("click", f11);
 
-function f11() {}
+function f11() {
+  let out11 = document.querySelector(".out-11");
+  let i11 = +document.querySelector(".i-11").value;
+  out11.innerHTML = d11.indexOf(i11);
+}
 
-document.querySelector(".b-11").onclick = f11;
 
 // Task 12
 // Напишите функцию f12, которая эмулирует работу метода indexOf - ищет введенное число в массиве d12 (перебором). Если числа нет - выводит -1, если есть - его позицию в массиве.
@@ -149,10 +187,22 @@ document.querySelector(".b-11").onclick = f11;
 // Вывод в out-12
 
 let d12 = [6, 62, 60, 70, 1, 5];
+let b12 = document.querySelector(".b-12");
+b12.addEventListener("click", f12);
 
-function f12() {}
+function f12() {
+  let i12 = +document.querySelector(".i-12").value;
+  let out12 = document.querySelector(".out-12");
+  for (let i = 0; i < d12.length; i++) {
+    if (d12[i] === i12) {
+      out12.innerHTML = i;
+      break
+    } else {
+      out12.innerHTML = -1;
+    }
+  }
+}
 
-document.querySelector(".b-12").onclick = f12;
 
 // Task 13
 // Напишите функцию f13, которая эмулирует работу метода reverse. Т.е. создает новый массив на основе d13 с обратным порядком элементов и выводит в out-13.
@@ -161,12 +211,18 @@ document.querySelector(".b-12").onclick = f12;
 // Вывод в out-13
 
 let d13 = [6, 0, 22, 1, 4, 76];
+let b13 = document.querySelector(".b-13");
+b13.addEventListener("click", f13);
 
 function f13() {
+  let m13 = [];
+  for (let i = d13.length - 1; i >= 0; i--) {
+    m13.push(d13[i]);
+  }
+  d13 = m13;
   showArr(".out-13", d13);
 }
 
-document.querySelector(".b-13").onclick = f13;
 
 // Task 14
 // Напишите функцию, которая получает i-14, переводит в число, а потом заполняет массив d14 так, что количество элементов равно введенному числу, и каждый элемент равен 1. Т.е. пользователь ввел 5, массив будет [1,1,1,1,1]. Выведите массив в out-14.
@@ -175,14 +231,20 @@ document.querySelector(".b-13").onclick = f13;
 // Вывод в out-14
 
 let d14 = [];
+let b14 = document.querySelector(".b-14");
+b14.addEventListener("click", f14);
 
 function f14() {
   d14 = []; //очистка
-
+  let i14 = document.querySelector(".i-14");
+  let k = 1;
+  for (let i = 0; i <= i14.value -1; i++) {
+    d14.push(k);
+  }
   showArr(".out-14", d14);
+  i14.value = '';
 }
 
-document.querySelector(".b-14").onclick = f14;
 
 // Task 15
 // Напишите функцию f15, которая вначале проверяет, есть ли элемент из i-15 в массиве d15  (переводим в число), а потом - если нет - добавляет его в массив.
@@ -191,12 +253,17 @@ document.querySelector(".b-14").onclick = f14;
 // Вывод в out-15
 
 let d15 = [0, 2, 5, -4, 6, 22, -9, -12, 8, 12, 13, 78];
+let b15 = document.querySelector(".b-15");
+b15.addEventListener("click", f15);
 
 function f15() {
+  let i15 = document.querySelector(".i-15");
+  if (d15.indexOf(i15.value) == -1) {
+    d15.push(i15.value);
+  }
   showArr(".out-15", d15);
 }
 
-document.querySelector(".b-15").onclick = f15;
 
 // Task 16
 // Даны два массива d161 и d162 - используя метод concat - добавьте в массив d16 результат применения concat между массивом d161 и d162.
@@ -207,12 +274,15 @@ document.querySelector(".b-15").onclick = f15;
 let d16 = [];
 let d161 = [5, 6, 7, 8, 9];
 let d162 = [23, 24, 56, 87];
+let b16 = document.querySelector(".b-16");
+b16.addEventListener("click", f16);
 
 function f16() {
+  d16 = d161.concat(d162);
   showArr(".out-16", d16);
 }
 
-document.querySelector(".b-16").onclick = f16;
+
 
 // Task 17
 // Напишите функцию f17, которая эмулирует работу метода concat. Функция должна объедиять массивы d171 и d172 и записывать результат в d17. Для эмуляции используйт цикл.
@@ -223,12 +293,19 @@ document.querySelector(".b-16").onclick = f16;
 let d17 = [];
 let d171 = ["a", "b", "c", "d"];
 let d172 = [1, 2, 3, 4, 5];
+let b17 = document.querySelector(".b-17");
+b17.addEventListener("click", f17);
 
 function f17() {
+  for (let i = 0; i < d171.length; i++) {
+    d17[d17.length] = d171[i];
+  }
+  for (let i = 0; i < d172.length; i++) {
+    d17[d17.length] = d172[i];
+  }
   showArr(".out-17", d17);
 }
 
-document.querySelector(".b-17").onclick = f17;
 
 // Task 18
 // Напишите функцию f18, которая получает значение из i-18 и проверяет есть ли такое значение в массиве d18 c использованием метода includes. Результат применения метода - выводится в .out-18.
@@ -237,10 +314,15 @@ document.querySelector(".b-17").onclick = f17;
 // Вывод в out-18
 
 let d18 = ["b", "c", "45", "e", "z", "y"];
+let b18 = document.querySelector(".b-18");
+b18.addEventListener("click", f18);
 
-function f18() {}
+function f18() {
+  let i18 = document.querySelector(".i-18").value;
+  let out18 = document.querySelector(".out-18");
+  out18.innerHTML = d18.includes(i18);
+}
 
-document.querySelector(".b-18").onclick = f18;
 
 // Task 19
 // Напишите фукнцию f19, которая выводит самую длинную строку maxString из массива d19 в out-19.
@@ -260,10 +342,20 @@ let d19 = [
   "advance",
   "every",
 ];
+let b19 = document.querySelector(".b-19");
+b19.addEventListener("click", f19);
 
-function f19() {}
+function f19() {
+  let out19 = document.querySelector(".out-19");
+  let max = '';
+  for (let i = 0; i < d19.length; i++) {
+    if (d19[i].length > max.length) {
+      max = d19[i];
+    }
+  }
+  out19.innerHTML = max;
+}
 
-document.querySelector(".b-19").onclick = f19;
 
 // Task 20
 // Напишите функцию f20, которая применяет к массиву d20 метод join с параметрами и соединяет элементы массива в одну строку. Результат выводит в .out-20. Укажите мето так d20.join(''). Обратите внимание  - между апострофами нет пробела!!!.
@@ -272,7 +364,11 @@ document.querySelector(".b-19").onclick = f19;
 // Вывод в out-20
 
 let d20 = [4, 5, 6, 7, 8, 9, 10];
+let b20 = document.querySelector(".b-20");
+b20.addEventListener("click", f20);
 
-function f20() {}
+function f20() {
+  let out20 = document.querySelector(".out-20");
+  out20.innerHTML = d20.join('');
+}
 
-document.querySelector(".b-20").onclick = f20;
